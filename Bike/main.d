@@ -23,6 +23,9 @@ bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h
+bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h
+bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
@@ -47,6 +50,7 @@ bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+bike\main.o: ../Core/Inc/adc.h
 bike\main.o: ../Core/Inc/dma.h
 bike\main.o: ../FATFS/App/fatfs.h
 bike\main.o: ../Middlewares/Third_Party/FatFs/src/ff.h
