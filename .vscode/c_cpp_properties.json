@@ -14,6 +14,10 @@
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Com",
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Int",
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\lvgl",
+                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\App\\ui",
+                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\FATFS\\Target",
+                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\FATFS\\App",
+                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\Third_Party\\FatFs\\src",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include",
                 "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\MDK-ARM",
@@ -185,7 +189,8 @@
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\lvgl\\src\\widgets\\tabview",
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\lvgl\\src\\widgets\\textarea",
                 "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\lvgl\\src\\widgets\\tileview",
-                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\lvgl\\src\\widgets\\win"
+                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\lvgl\\src\\widgets\\win",
+                "d:\\vscode_workspace\\stm32_pro07_lvgl\\STM32F405RGT6\\Bike\\Middlewares\\Third_Party\\FatFs\\src\\option"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

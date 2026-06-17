@@ -39,6 +39,8 @@ bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
 bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h
+bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
 bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 bike\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
@@ -255,7 +257,9 @@ bike\freertos.o: ../Middlewares/lvgl/src/lv_api_map_v9_2.h
 bike\freertos.o: ../Middlewares/lvgl/src/lv_api_map_v9_3.h
 bike\freertos.o: ../Middlewares/lvgl/lv_port_disp.h
 bike\freertos.o: ../Middlewares/lvgl/lv_port_indev.h
-bike\freertos.o: ../Middlewares/lvgl/demos/lv_demos.h
-bike\freertos.o: ../Middlewares/lvgl/demos/benchmark/lv_demo_benchmark.h
-bike\freertos.o: ../Middlewares/lvgl/demos/benchmark/../lv_demos.h
-bike\freertos.o: ../Middlewares/lvgl/demos/widgets/lv_demo_widgets.h
+bike\freertos.o: ../App/ui/ui.h
+bike\freertos.o: ../App/ui/ui_common.h
+bike\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+bike\freertos.o: ../App/ui/ui_settings.h
+bike\freertos.o: ../App/ui/ui_general.h
+bike\freertos.o: ../App/ui/ui_roadmap.h

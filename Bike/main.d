@@ -30,6 +30,8 @@ bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h
+bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 bike\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
@@ -46,7 +48,17 @@ bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 bike\main.o: ../Core/Inc/dma.h
+bike\main.o: ../FATFS/App/fatfs.h
+bike\main.o: ../Middlewares/Third_Party/FatFs/src/ff.h
+bike\main.o: ../Middlewares/Third_Party/FatFs/src/integer.h
+bike\main.o: ../FATFS/Target/ffconf.h
+bike\main.o: ../FATFS/Target/bsp_driver_sd.h
+bike\main.o: ../FATFS/Target/fatfs_platform.h
+bike\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
+bike\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
+bike\main.o: ../FATFS/Target/sd_diskio.h
 bike\main.o: ../Core/Inc/i2c.h
+bike\main.o: ../Core/Inc/sdio.h
 bike\main.o: ../Core/Inc/spi.h
 bike\main.o: ../Core/Inc/usart.h
 bike\main.o: ../Core/Inc/gpio.h
