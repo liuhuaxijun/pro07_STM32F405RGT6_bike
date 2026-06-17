@@ -1,0 +1,12 @@
+bike\lv_gif.o: ../Middlewares/lvgl/src/libs/gif/lv_gif.c
+bike\lv_gif.o: ../Middlewares/lvgl/src/libs/gif/lv_gif.h
+bike\lv_gif.o: ../Middlewares/lvgl/src/libs/gif/../../lv_conf_internal.h
+bike\lv_gif.o: ../Middlewares/lvgl/src/libs/gif/../../lv_conf_kconfig.h
+bike\lv_gif.o: ../Middlewares/lvgl/lv_conf.h
+bike\lv_gif.o: ../Middlewares/lvgl/src/libs/gif/../../misc/lv_types.h
+bike\lv_gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\lv_gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\lv_gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\lv_gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\lv_gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\lv_gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

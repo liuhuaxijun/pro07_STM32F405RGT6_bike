@@ -45,6 +45,7 @@ bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 bike\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+bike\main.o: ../Core/Inc/dma.h
 bike\main.o: ../Core/Inc/i2c.h
 bike\main.o: ../Core/Inc/spi.h
 bike\main.o: ../Core/Inc/usart.h

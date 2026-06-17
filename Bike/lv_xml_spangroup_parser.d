@@ -1,0 +1,13 @@
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.h
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/src/others/xml/parsers/../lv_xml.h
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/src/others/xml/parsers/../../../misc/lv_types.h
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/src/others/xml/parsers/../../../misc/../lv_conf_internal.h
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/src/others/xml/parsers/../../../misc/../lv_conf_kconfig.h
+bike\lv_xml_spangroup_parser.o: ../Middlewares/lvgl/lv_conf.h
+bike\lv_xml_spangroup_parser.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\lv_xml_spangroup_parser.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\lv_xml_spangroup_parser.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\lv_xml_spangroup_parser.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\lv_xml_spangroup_parser.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\lv_xml_spangroup_parser.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

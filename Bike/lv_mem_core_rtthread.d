@@ -1,0 +1,13 @@
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/src/stdlib/rtthread/../lv_mem.h
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/src/stdlib/rtthread/../../lv_conf_internal.h
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/src/stdlib/rtthread/../../lv_conf_kconfig.h
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/lv_conf.h
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/src/stdlib/rtthread/../lv_string.h
+bike\lv_mem_core_rtthread.o: ../Middlewares/lvgl/src/stdlib/rtthread/../../misc/lv_types.h
+bike\lv_mem_core_rtthread.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\lv_mem_core_rtthread.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\lv_mem_core_rtthread.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\lv_mem_core_rtthread.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\lv_mem_core_rtthread.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\lv_mem_core_rtthread.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

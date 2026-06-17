@@ -1,0 +1,16 @@
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/lv_string_builtin.c
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../lv_conf_internal.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../lv_conf_kconfig.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/lv_conf.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../misc/lv_assert.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../misc/lv_log.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../misc/lv_types.h
+bike\lv_string_builtin.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\lv_string_builtin.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\lv_string_builtin.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\lv_string_builtin.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\lv_string_builtin.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\lv_string_builtin.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../misc/../stdlib/lv_mem.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../misc/../stdlib/lv_string.h
+bike\lv_string_builtin.o: ../Middlewares/lvgl/src/stdlib/builtin/../../misc/lv_math.h

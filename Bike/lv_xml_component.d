@@ -1,0 +1,12 @@
+bike\lv_xml_component.o: ../Middlewares/lvgl/src/others/xml/lv_xml_component.c
+bike\lv_xml_component.o: ../Middlewares/lvgl/src/others/xml/lv_xml_component.h
+bike\lv_xml_component.o: ../Middlewares/lvgl/src/others/xml/../../misc/lv_types.h
+bike\lv_xml_component.o: ../Middlewares/lvgl/src/others/xml/../../misc/../lv_conf_internal.h
+bike\lv_xml_component.o: ../Middlewares/lvgl/src/others/xml/../../misc/../lv_conf_kconfig.h
+bike\lv_xml_component.o: ../Middlewares/lvgl/lv_conf.h
+bike\lv_xml_component.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\lv_xml_component.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\lv_xml_component.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\lv_xml_component.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\lv_xml_component.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\lv_xml_component.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

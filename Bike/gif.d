@@ -1,0 +1,14 @@
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/gif.c
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/AnimatedGIF.h
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/../../../../misc/lv_fs.h
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/../../../../misc/../lv_conf_internal.h
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/../../../../misc/../lv_conf_kconfig.h
+bike\gif.o: ../Middlewares/lvgl/lv_conf.h
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/../../../../misc/lv_types.h
+bike\gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\gif.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+bike\gif.o: ../Middlewares/lvgl/src/libs/gif/AnimatedGIF/src/../../../../stdlib/lv_string.h

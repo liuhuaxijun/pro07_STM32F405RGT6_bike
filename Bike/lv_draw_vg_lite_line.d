@@ -1,0 +1,15 @@
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/../../misc/lv_area_private.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/../../misc/lv_area.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/../../misc/../lv_conf_internal.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/../../misc/../lv_conf_kconfig.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/lv_conf.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/../../misc/lv_types.h
+bike\lv_draw_vg_lite_line.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\lv_draw_vg_lite_line.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\lv_draw_vg_lite_line.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+bike\lv_draw_vg_lite_line.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\inttypes.h
+bike\lv_draw_vg_lite_line.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+bike\lv_draw_vg_lite_line.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/../../misc/lv_math.h
+bike\lv_draw_vg_lite_line.o: ../Middlewares/lvgl/src/draw/vg_lite/lv_draw_vg_lite.h
