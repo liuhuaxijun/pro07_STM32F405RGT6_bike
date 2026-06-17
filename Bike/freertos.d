@@ -272,3 +272,5 @@ bike\freertos.o: ../FATFS/Target/fatfs_platform.h
 bike\freertos.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
 bike\freertos.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 bike\freertos.o: ../FATFS/Target/sd_diskio.h
+bike\freertos.o: ../Int/Int_Power.h
+bike\freertos.o: ../Core/Inc/gpio.h

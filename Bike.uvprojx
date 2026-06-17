@@ -1169,6 +1169,16 @@
               <FileType>5</FileType>
               <FilePath>..\Int\Int_CST6189.h</FilePath>
             </File>
+            <File>
+              <FileName>Int_Power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Int\Int_Power.c</FilePath>
+            </File>
+            <File>
+              <FileName>Int_Power.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Int\Int_Power.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
