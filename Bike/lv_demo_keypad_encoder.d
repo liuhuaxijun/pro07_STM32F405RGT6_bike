@@ -205,6 +205,3 @@ bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../../sr
 bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../../src/lv_api_map_v9_1.h
 bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../../src/lv_api_map_v9_2.h
 bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../../src/lv_api_map_v9_3.h
-bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../benchmark/lv_demo_benchmark.h
-bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../benchmark/../lv_demos.h
-bike\lv_demo_keypad_encoder.o: ../Middlewares/lvgl/demos/keypad_encoder/../widgets/lv_demo_widgets.h

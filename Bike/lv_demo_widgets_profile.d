@@ -206,7 +206,3 @@ bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../../src/lv_a
 bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../../src/lv_api_map_v9_1.h
 bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../../src/lv_api_map_v9_2.h
 bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../../src/lv_api_map_v9_3.h
-bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../benchmark/lv_demo_benchmark.h
-bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../benchmark/../lv_demos.h
-bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/../widgets/lv_demo_widgets.h
-bike\lv_demo_widgets_profile.o: ../Middlewares/lvgl/demos/widgets/lv_demo_widgets_components.h

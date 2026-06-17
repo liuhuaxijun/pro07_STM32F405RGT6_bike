@@ -205,6 +205,3 @@ bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../../src/lv_api_map_v9_
 bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../../src/lv_api_map_v9_1.h
 bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../../src/lv_api_map_v9_2.h
 bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../../src/lv_api_map_v9_3.h
-bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../benchmark/lv_demo_benchmark.h
-bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../benchmark/../lv_demos.h
-bike\lv_demo_stress.o: ../Middlewares/lvgl/demos/stress/../widgets/lv_demo_widgets.h

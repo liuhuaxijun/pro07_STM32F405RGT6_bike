@@ -205,6 +205,3 @@ bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../../src/lv_api_map_v9_0.
 bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../../src/lv_api_map_v9_1.h
 bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../../src/lv_api_map_v9_2.h
 bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../../src/lv_api_map_v9_3.h
-bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../benchmark/lv_demo_benchmark.h
-bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../benchmark/../lv_demos.h
-bike\lv_demo_music.o: ../Middlewares/lvgl/demos/music/../widgets/lv_demo_widgets.h

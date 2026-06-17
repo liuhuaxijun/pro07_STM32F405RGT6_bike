@@ -263,3 +263,12 @@ bike\freertos.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 bike\freertos.o: ../App/ui/ui_settings.h
 bike\freertos.o: ../App/ui/ui_general.h
 bike\freertos.o: ../App/ui/ui_roadmap.h
+bike\freertos.o: ../FATFS/App/fatfs.h
+bike\freertos.o: ../Middlewares/Third_Party/FatFs/src/ff.h
+bike\freertos.o: ../Middlewares/Third_Party/FatFs/src/integer.h
+bike\freertos.o: ../FATFS/Target/ffconf.h
+bike\freertos.o: ../FATFS/Target/bsp_driver_sd.h
+bike\freertos.o: ../FATFS/Target/fatfs_platform.h
+bike\freertos.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
+bike\freertos.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
+bike\freertos.o: ../FATFS/Target/sd_diskio.h

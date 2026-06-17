@@ -205,6 +205,3 @@ bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../../src/lv_api_map_v9_0.h
 bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../../src/lv_api_map_v9_1.h
 bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../../src/lv_api_map_v9_2.h
 bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../../src/lv_api_map_v9_3.h
-bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../benchmark/lv_demo_benchmark.h
-bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../benchmark/../lv_demos.h
-bike\lv_demo_gltf.o: ../Middlewares/lvgl/demos/gltf/../widgets/lv_demo_widgets.h
