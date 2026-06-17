@@ -1,0 +1,14 @@
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+bike\croutine.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+bike\croutine.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+bike\croutine.o: ../Core/Inc/FreeRTOSConfig.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/croutine.h
+bike\croutine.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
