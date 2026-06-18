@@ -50,6 +50,7 @@
 "bike\com_debug.o"
 "bike\int_cst6189.o"
 "bike\int_power.o"
+"bike\int_atgm336h.o"
 "bike\img_benchmark_avatar.o"
 "bike\img_benchmark_lvgl_logo_argb.o"
 "bike\img_benchmark_lvgl_logo_rgb.o"

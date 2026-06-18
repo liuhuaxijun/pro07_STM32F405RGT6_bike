@@ -34,6 +34,7 @@
 #include "ui.h"
 #include "fatfs.h"
 #include "Int_Power.h"
+#include "Int_ATGM336H.h"
 
 /* USER CODE END Includes */
 
@@ -49,8 +50,8 @@ float v = 0.0f;
 
 /**
  * @brief 更新lvgl的电池电量图标
- * 
- * @param args 
+ *
+ * @param args
  */
 void update_battery_callback(void *args)
 {
@@ -81,6 +82,13 @@ const osThreadAttr_t powerTask_attributes = {
     .stack_size = 256 * 4,
     .priority = (osPriority_t)osPriorityLow,
 };
+/* Definitions for gpsTask */
+osThreadId_t gpsTaskHandle;
+const osThreadAttr_t gpsTask_attributes = {
+    .name = "gpsTask",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityBelowNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -89,6 +97,7 @@ const osThreadAttr_t powerTask_attributes = {
 
 void MainTaskFunc(void *argument);
 void PowerTaskFunc(void *argument);
+void GPSTaskFunc(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -125,6 +134,9 @@ void MX_FREERTOS_Init(void)
 
   /* creation of powerTask */
   powerTaskHandle = osThreadNew(PowerTaskFunc, NULL, &powerTask_attributes);
+
+  /* creation of gpsTask */
+  gpsTaskHandle = osThreadNew(GPSTaskFunc, NULL, &gpsTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -223,6 +235,72 @@ void PowerTaskFunc(void *argument)
     osDelay(10);
   }
   /* USER CODE END PowerTaskFunc */
+}
+
+/* USER CODE BEGIN Header_GPSTaskFunc */
+/**
+ * @brief Function implementing the gpsTask thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_GPSTaskFunc */
+void GPSTaskFunc(void *argument)
+{
+  /* USER CODE BEGIN GPSTaskFunc */
+  /* Infinite loop */
+  char *str = NULL;
+  uint8_t saleNum = 0;
+
+  // 存储经纬度数据是否有效
+  char activityFlag = 0;
+  // 存储经纬度数据信息
+  float lon = 0.0f, lat = 0.0f;
+  char lonDir = 0, latDir = 0;
+  // 存储速度信息
+  float speed = 0.0f, distance = 0.0f;
+  // 骑行时间
+  int time = 0;
+
+  Int_ATGM336H_Init();
+  for (;;)
+  {
+    if (gps_sizes > 0)
+    {
+      // COM_DEBUG_LN("gps_len: %d", gps_sizes);
+      // COM_DEBUG_LN("gps_data: %s", gps_buffers);
+
+      // 解析卫星个数
+      str = strstr((char *)gps_buffers, "GNGGA");
+      if (str != NULL)
+      {
+        // $GNGGA,070822.000,4006.81888,N,11621.89413,E,1,05,25.5,30.2,M,-9.6,M,,*58
+        sscanf(str, "%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%*[^,],%hhu", &saleNum);
+        // COM_DEBUG_LN("num = %hhu", saleNum);
+      }
+
+      str = strstr((char *)gps_buffers, "GNRMC");
+      if (str != NULL)
+      {
+        // 解析数据状态
+        sscanf(str, "%*[^AV]%c", &activityFlag);
+        COM_DEBUG_LN("[[%c]]", activityFlag);
+
+        if (activityFlag == 'A')
+        {
+          // 有效数据，解析经纬度，经纬度方向，速度
+          // $GNRMC,070822.000,A,4006.81888,N,11621.89413,E,0.81,359.02,020624,,,A,V*02
+          sscanf(str, "%*[^A]A,%f,%c,%f,%c,%f,%f", &lat, &latDir, &lon, &lonDir, &speed, &time);
+
+          COM_DEBUG_LN("lat = %f, latDir = %c, lon = %f, lonDir = %c, speed = %f, time = %d", lat, latDir, lon, lonDir, speed, time);
+        }
+      }
+
+      gps_sizes = 0;
+    }
+
+    osDelay(1000);
+  }
+  /* USER CODE END GPSTaskFunc */
 }
 
 /* Private application code --------------------------------------------------*/

@@ -278,3 +278,4 @@ bike\freertos.o: ../FATFS/Target/sd_diskio.h
 bike\freertos.o: ../Int/Int_Power.h
 bike\freertos.o: ../Core/Inc/gpio.h
 bike\freertos.o: ../Core/Inc/adc.h
+bike\freertos.o: ../Int/Int_ATGM336H.h
