@@ -222,6 +222,7 @@ void ui_create(void)
 
     // 添加静态翻译
     lv_translation_add_static(languages, tags, translations);
+    lv_translation_set_language(languages[0]);  // English
 
     // 创建UI页面
     ui_create_page();
