@@ -1,0 +1,18 @@
+# Keil/MDK build output directory
+/Bike/
+
+# Keil/ARM compiler intermediate and output files
+*.o
+*.d
+*.crf
+*.map
+*.axf
+*.hex
+*.htm
+*.lnp
+*.dep
+*.build_log.htm
+*.lst
+
+# User-local Keil workspace state
+*.uvguix.*
