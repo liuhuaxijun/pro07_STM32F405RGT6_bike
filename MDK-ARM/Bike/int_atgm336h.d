@@ -43,3 +43,5 @@ bike\int_atgm336h.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 bike\int_atgm336h.o: ../Core/Inc/usart.h
 bike\int_atgm336h.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 bike\int_atgm336h.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+bike\int_atgm336h.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+bike\int_atgm336h.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

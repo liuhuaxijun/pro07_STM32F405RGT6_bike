@@ -8,6 +8,8 @@ char beforetimeBuff[9];
 
 // 电池电量标签
 lv_obj_t *batteryLabel = NULL;
+// 运动状态标签
+lv_obj_t *runStateLabel = NULL;
 
 /**
  * @brief 初始化样式
@@ -91,7 +93,7 @@ static void ui_create_title(lv_obj_t *title)
     lv_obj_align(saleLabel, LV_ALIGN_LEFT_MID, 10, 0);
 
     // 运动状态
-    lv_obj_t *runStateLabel = lv_label_create(title);
+    runStateLabel = lv_label_create(title);
     // lv_label_set_text(runStateLabel, "Stopped");
     ui_common_translation(runStateLabel, tags[0]);
     lv_obj_align(runStateLabel, LV_ALIGN_CENTER, 0, 0);
@@ -254,5 +256,22 @@ void ui_updateBattery(bool isCharge, float v)
         {
             lv_label_set_text(batteryLabel, LV_SYMBOL_BATTERY_EMPTY);
         }
+    }
+}
+
+/**
+ * @brief 更新运动状态
+ *
+ * @param speed
+ */
+void ui_updateBikeState(float speed)
+{
+    if (speed > 0.5f)
+    {
+        lv_label_set_text(runStateLabel, lv_tr(tags[1]));
+    }
+    else
+    {
+        lv_label_set_text(runStateLabel, lv_tr(tags[0]));
     }
 }

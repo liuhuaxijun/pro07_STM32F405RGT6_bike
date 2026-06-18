@@ -57,6 +57,48 @@ void update_battery_callback(void *args)
 {
   ui_updateBattery(charge, v);
 }
+
+// 卫星个数
+uint8_t saleNum = 0;
+// 存储经纬度数据信息
+float lon = 0.0f, lat = 0.0f;
+char lonDir = 0, latDir = 0;
+// 存储速度信息
+float speed = 0.0f, distance = 0.0f;
+// 骑行时间
+int time = 0;
+
+/**
+ * @brief 更新lvgl的骑行数据
+ *
+ * @param args
+ */
+void update_bike_cb(void *args)
+{
+  // 更新卫星个数
+  lv_subject_set_int(&saleNumSubject, saleNum);
+
+  // 更新骑行速度
+  lv_subject_set_float(&speedSubject, speed);
+
+  // 更新骑行距离
+  lv_subject_set_float(&distanceSubject, distance);
+
+  // 更新经纬度
+  lv_subject_set_float(&lonSubject, lon);
+  lv_subject_set_float(&latSubject, lat);
+
+  // 骑行时间
+  char timestr[9] = {0};
+  sprintf(timestr, "%d : %d", time / 60, time % 60);
+  lv_subject_copy_string(&timeSubject, timestr);
+
+  // 更新运动状态
+  ui_updateBikeState(speed);
+
+  // 根据经纬度更新用户地图中的位置【考试】
+}
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -248,20 +290,16 @@ void GPSTaskFunc(void *argument)
 {
   /* USER CODE BEGIN GPSTaskFunc */
   /* Infinite loop */
-  char *str = NULL;
-  uint8_t saleNum = 0;
 
+  // 存储GPS接收到的数据
+  char *str = NULL;
   // 存储经纬度数据是否有效
   char activityFlag = 0;
-  // 存储经纬度数据信息
-  float lon = 0.0f, lat = 0.0f;
-  char lonDir = 0, latDir = 0;
-  // 存储速度信息
-  float speed = 0.0f, distance = 0.0f;
-  // 骑行时间
-  int time = 0;
 
   Int_ATGM336H_Init();
+
+  // 上一次时间记录
+  TickType_t lastTime = xTaskGetTickCount(), currentTime = 0;
   for (;;)
   {
     if (gps_sizes > 0)
@@ -289,13 +327,48 @@ void GPSTaskFunc(void *argument)
         {
           // 有效数据，解析经纬度，经纬度方向，速度
           // $GNRMC,070822.000,A,4006.81888,N,11621.89413,E,0.81,359.02,020624,,,A,V*02
-          sscanf(str, "%*[^A]A,%f,%c,%f,%c,%f,%f", &lat, &latDir, &lon, &lonDir, &speed, &time);
+          sscanf(str, "%*[^A]A,%f,%c,%f,%c,%f", &lat, &latDir, &lon, &lonDir, &speed);
 
-          COM_DEBUG_LN("lat = %f, latDir = %c, lon = %f, lonDir = %c, speed = %f, time = %d", lat, latDir, lon, lonDir, speed, time);
+          // 将经纬度格式转化为°格式
+          // 维度xxyy.yyy xx代表° yy.yyy代表′ 需要转化zz.ppp°
+          lat = (int16_t)lat / 100 + (lat - ((int16_t)lat / 100) * 100) / 60;
+          // 经度xxxyy.yyy xxx代表° yy.yyy代表′ 需要转化zzz.ppp°
+          lon = (int16_t)lon / 100 + (lon - ((int16_t)lon / 100) * 100) / 60;
+
+          // 南维和西经是负值
+          if (latDir == 'S')
+          {
+            lat = -lat;
+          }
+          if (lonDir == 'W')
+          {
+            lon = -lon;
+          }
+
+          // 将GPS坐标系转化为GCJ02（高德）坐标系
+          gps_to_gcj02(lat, lon, &lat, &lon);
+
+          // 转换速度的单位
+          speed *= 1.852;
+
+          // 获取当前时间
+          currentTime = xTaskGetTickCount();
+          // 一轮的骑行时间
+          uint32_t sec = (currentTime - lastTime) / 1000;
+          // 一轮的骑行里程
+          distance += speed * (sec * 1.0 / 3600);
+          // 总的骑行时间（s）
+          time += sec;
+          // 更新上一次时间
+          lastTime = currentTime;
+
+          COM_DEBUG_LN("lon = %f, lonDir = %c, lat = %f, latDir = %c, speed = %f, distance = %f, time = %d", lon, lonDir, lat, latDir, speed, distance, time);
+          // 更新数据到lvgl
+          lv_async_call(update_bike_cb, NULL);
         }
       }
 
-      gps_sizes = 0;
+      // gps_sizes = 0;
     }
 
     osDelay(1000);
