@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Bike\Bike.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Bike\Bike.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Jun 18 15:47:35 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Jun 18 16:12:29 2026
 <BR><P>
 <H3>Maximum Stack Usage =       3240 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -14,6 +14,7 @@ Mutually Recursive functions
 </H3> <LI><a href="#[1e]">ADC_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1e]">ADC_IRQHandler</a><BR>
  <LI><a href="#[814]">lv_vsnprintf_inner</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[814]">lv_vsnprintf_inner</a><BR>
  <LI><a href="#[258]">_etoa</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[25c]">_ftoa</a><BR>
+ <LI><a href="#[7ee]">walk_core</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7ee]">walk_core</a><BR>
  <LI><a href="#[44a]">event_send_core</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[44a]">event_send_core</a><BR>
  <LI><a href="#[49f]">lv_area_is_point_on</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[49f]">lv_area_is_point_on</a><BR>
  <LI><a href="#[7a7]">lv_obj_transform_point_array</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7a7]">lv_obj_transform_point_array</a><BR>
@@ -28,7 +29,6 @@ Mutually Recursive functions
  <LI><a href="#[757]">lv_obj_destruct</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[757]">lv_obj_destruct</a><BR>
  <LI><a href="#[755]">obj_delete_core</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[755]">obj_delete_core</a><BR>
  <LI><a href="#[7b9]">report_style_change_core</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7b9]">report_style_change_core</a><BR>
- <LI><a href="#[7ee]">walk_core</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7ee]">walk_core</a><BR>
  <LI><a href="#[7ac]">lv_obj_redraw</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7ad]">lv_obj_refr</a><BR>
  <LI><a href="#[7fe]">lv_refr_get_top_obj</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7fe]">lv_refr_get_top_obj</a><BR>
  <LI><a href="#[6de]">lv_indev_search_obj</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[6de]">lv_indev_search_obj</a><BR>
@@ -926,8 +926,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[1a2]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_bike_cb
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPSTaskFunc
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPSTaskFunc
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;label_text_observer_cb
 </UL>
 
@@ -6712,8 +6711,8 @@ Global Symbols
 <LI><a href="#[257]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_draw_buf_width_to_stride
 <LI><a href="#[622]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_draw_buf_flush_cache
 </UL>
-<BR>[Address Reference Count : 5]<UL><LI> lv_font_montserrat_16.o(.constdata)
-<LI> lv_font_montserrat_30.o(.constdata)
+<BR>[Address Reference Count : 5]<UL><LI> lv_font_montserrat_30.o(.constdata)
+<LI> lv_font_montserrat_16.o(.constdata)
 <LI> lv_font_montserrat_14.o(.constdata)
 <LI> lv_font_montserrat_20.o(.constdata)
 <LI> my_font.o(.constdata)
@@ -6745,8 +6744,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_kern_value
 <LI><a href="#[4a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_glyph_dsc_id
 </UL>
-<BR>[Address Reference Count : 5]<UL><LI> lv_font_montserrat_16.o(.constdata)
-<LI> lv_font_montserrat_30.o(.constdata)
+<BR>[Address Reference Count : 5]<UL><LI> lv_font_montserrat_30.o(.constdata)
+<LI> lv_font_montserrat_16.o(.constdata)
 <LI> lv_font_montserrat_14.o(.constdata)
 <LI> lv_font_montserrat_20.o(.constdata)
 <LI> my_font.o(.constdata)
@@ -14596,7 +14595,8 @@ Global Symbols
 <LI><a href="#[7ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_obj_tree_walk
 <LI><a href="#[4f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_strdup
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;language_change_cb
+<BR>[Called By]<UL><LI><a href="#[21c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_create
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;language_change_cb
 </UL>
 
 <P><STRONG><a name="[4c6]"></a>lv_trigo_cos</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, lv_math.o(i.lv_trigo_cos))
@@ -14859,10 +14859,11 @@ Global Symbols
 <LI><a href="#[90d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_create_content
 </UL>
 
-<P><STRONG><a name="[21c]"></a>ui_create</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, ui.o(i.ui_create))
+<P><STRONG><a name="[21c]"></a>ui_create</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, ui.o(i.ui_create))
 <BR><BR>[Stack]<UL><LI>Max Depth = 2992<LI>Call Chain = ui_create &rArr; ui_create_page &rArr; ui_create_content &rArr; ui_roadmap_create &rArr; ui_roadMap_processMap &rArr; load_map &rArr; lv_image_set_src &rArr; update_align &rArr; scale_update &rArr; lv_obj_update_layout &rArr; layout_update_core &rArr;  layout_update_core (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[896]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_translation_add_static
+<BR>[Calls]<UL><LI><a href="#[551]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_translation_set_language
+<LI><a href="#[896]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_translation_add_static
 <LI><a href="#[90b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_subject_init
 <LI><a href="#[90a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_style_init
 <LI><a href="#[90c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_create_page
@@ -15001,14 +15002,13 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(i.PowerTaskFunc)
 </UL>
-<P><STRONG><a name="[61]"></a>update_bike_cb</STRONG> (Thumb, 150 bytes, Stack size 40 bytes, freertos.o(i.update_bike_cb))
-<BR><BR>[Stack]<UL><LI>Max Depth = 2552<LI>Call Chain = update_bike_cb &rArr; ui_updateBikeState &rArr; lv_label_set_text &rArr; set_text_internal &rArr; lv_label_refr_text &rArr; lv_obj_invalidate &rArr; lv_obj_invalidate_area &rArr; lv_inv_area &rArr; lv_display_send_event &rArr; lv_event_push_and_send &rArr; lv_event_send &rArr; cleanup_event_list &rArr; cleanup_event_list_core &rArr; lv_array_resize &rArr; lv_realloc &rArr; lv_realloc_core &rArr; lv_tlsf_realloc &rArr; lv_tlsf_malloc &rArr; block_prepare_used &rArr; block_trim_free &rArr; block_split &rArr; block_mark_as_free &rArr; block_link_next &rArr; block_next &rArr; lv_log_add &rArr; lv_snprintf &rArr; lv_vsnprintf_inner &rArr;  lv_vsnprintf_inner (Cycle)
+<P><STRONG><a name="[61]"></a>update_bike_cb</STRONG> (Thumb, 124 bytes, Stack size 32 bytes, freertos.o(i.update_bike_cb))
+<BR><BR>[Stack]<UL><LI>Max Depth = 2544<LI>Call Chain = update_bike_cb &rArr; ui_updateBikeState &rArr; lv_label_set_text &rArr; set_text_internal &rArr; lv_label_refr_text &rArr; lv_obj_invalidate &rArr; lv_obj_invalidate_area &rArr; lv_inv_area &rArr; lv_display_send_event &rArr; lv_event_push_and_send &rArr; lv_event_send &rArr; cleanup_event_list &rArr; cleanup_event_list_core &rArr; lv_array_resize &rArr; lv_realloc &rArr; lv_realloc_core &rArr; lv_tlsf_realloc &rArr; lv_tlsf_malloc &rArr; block_prepare_used &rArr; block_trim_free &rArr; block_split &rArr; block_mark_as_free &rArr; block_link_next &rArr; block_next &rArr; lv_log_add &rArr; lv_snprintf &rArr; lv_vsnprintf_inner &rArr;  lv_vsnprintf_inner (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[914]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ui_updateBikeState
 <LI><a href="#[34c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_subject_set_int
 <LI><a href="#[866]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_subject_set_float
 <LI><a href="#[85f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lv_subject_copy_string
-<LI><a href="#[1a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(i.GPSTaskFunc)
