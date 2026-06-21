@@ -221,7 +221,7 @@ void ui_create(void)
     ui_subject_init();
 
     // 添加静态翻译
-    lv_translation_add_static(languages, tags, translations);
+    lv_translation_add_static((const char **)languages, (const char **)tags, (const char **)translations);
     lv_translation_set_language(languages[0]);  // English
 
     // 创建UI页面
@@ -275,4 +275,15 @@ void ui_updateBikeState(float speed)
     {
         lv_label_set_text(runStateLabel, lv_tr(tags[0]));
     }
+}
+
+/**
+ * @brief 更新位置信息
+ * 
+ * @param lat 
+ * @param lon 
+ */
+void ui_updateLocation(float lat, float lon)
+{
+    
 }

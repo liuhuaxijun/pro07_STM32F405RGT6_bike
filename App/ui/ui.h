@@ -8,7 +8,12 @@
 
 void ui_create(void);
 
-// 更新电池电量
+/**
+ * @brief 更新电池电量
+ * 
+ * @param isCharge 
+ * @param v 
+ */
 void ui_updateBattery(bool isCharge, float v);
 
 /**
@@ -17,5 +22,13 @@ void ui_updateBattery(bool isCharge, float v);
  * @param speed
  */
 void ui_updateBikeState(float speed);
+
+/**
+ * @brief 更新位置
+ * 
+ * @param lat 
+ * @param lon 
+ */
+void ui_updateLocation(float lat, float lon);
 
 #endif

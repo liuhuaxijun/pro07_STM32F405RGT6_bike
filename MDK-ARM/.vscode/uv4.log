@@ -1,8 +1,14 @@
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Bike'
-Note: source file '../Middlewares/lvgl/src/libs/gltf/gltf_view/lv_gltf_view_shader.cpp' - object file renamed from 'Bike\lv_gltf_view_shader.o' to 'Bike\lv_gltf_view_shader_1.o'.Note: source file '../Middlewares/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c' - object file renamed from 'Bike\vg_lite_matrix.o' to 'Bike\vg_lite_matrix_1.o'.compiling freertos.c...
+Note: source file '../Middlewares/lvgl/src/libs/gltf/gltf_view/lv_gltf_view_shader.cpp' - object file renamed from 'Bike\lv_gltf_view_shader.o' to 'Bike\lv_gltf_view_shader_1.o'.Note: source file '../Middlewares/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c' - object file renamed from 'Bike\vg_lite_matrix.o' to 'Bike\vg_lite_matrix_1.o'.compiling ui_common.c...
+..\App\ui\ui_common.c(37): warning:  #870-D: invalid multibyte character sequence
+      "Stopped", "静止�? ",
+..\App\ui\ui_common.c(38): warning:  #870-D: invalid multibyte character sequence
+      "Running", "运行�? ",
+..\App\ui\ui_common.c: 2 warnings, 0 errors
+compiling ui.c...
 linking...
-Program Size: Code=414892 RO-data=123612 RW-data=1740 ZI-data=106892  
+Program Size: Code=414884 RO-data=123612 RW-data=1740 ZI-data=106892  
 FromELF: creating hex file...
-"Bike\Bike.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:37
+"Bike\Bike.axf" - 0 Error(s), 2 Warning(s).
+Build Time Elapsed:  00:00:34

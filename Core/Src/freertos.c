@@ -98,6 +98,7 @@ void update_bike_cb(void *args)
   ui_updateBikeState(speed);
 
   // 根据经纬度更新用户地图中的位置【考试】
+  ui_updateLocation(lat, lon);
 }
 
 // 坡度百分比
