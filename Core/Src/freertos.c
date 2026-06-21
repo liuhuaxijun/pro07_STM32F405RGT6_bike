@@ -371,8 +371,13 @@ void GPSTaskFunc(void *argument)
             lon = -lon;
           }
 
-          // 将GPS坐标系转化为GCJ02（高德）坐标系
-          gps_to_gcj02(lat, lon, &lat, &lon);
+          // 固定测试位置：深圳西部硅谷。
+          // 这里直接使用用户取点坐标，避免再次转换后红点向右下偏移。
+          lat = 22.626121f;
+          lon = 113.837692f;
+
+          // 实测当前离线瓦片与该取点坐标直接匹配，不再二次转换。
+          // gps_to_gcj02(lat, lon, &lat, &lon);
 
           // 转换速度的单位
           speed *= 1.852f;

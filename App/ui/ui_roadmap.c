@@ -48,9 +48,50 @@ bool is_user_scroll = true;
 
 // 用户红点
 lv_obj_t *userPoint = NULL;
+static lv_obj_t *roadmap_map_div = NULL;
+static lv_obj_t *roadmap_tile_div = NULL;
 
 // 旧的缩放等级
 int last_zoom = 0;
+
+/**
+ * @brief 滚动地图视口，让当前中心世界像素点位于屏幕中心。
+ *
+ * @param parent 可滚动的地图容器。
+ */
+static void scroll_map_to_center(lv_obj_t *parent)
+{
+    if (parent == NULL)
+    {
+        return;
+    }
+
+    last_scroll_x = TITLE_SIZE + title.center_relav_world_x - scr_w / 2;
+    last_scroll_y = TITLE_SIZE + title.center_relav_world_y - scr_h / 2;
+    is_user_scroll = false;
+    lv_obj_scroll_to(parent, last_scroll_x, last_scroll_y, LV_ANIM_OFF);
+    is_user_scroll = true;
+}
+
+/**
+ * @brief 根据最新世界像素坐标移动用户红点。
+ */
+static void update_user_point_position(void)
+{
+    if (userPoint == NULL)
+    {
+        return;
+    }
+
+    int32_t x = title.center_world_x - title.center_relav_world_x - TITLE_SIZE;
+    int32_t y = title.center_world_y - title.center_relav_world_y - TITLE_SIZE;
+    int32_t pos_x = title.world_x - x;
+    int32_t pos_y = title.world_y - y;
+
+    lv_obj_set_pos(userPoint, pos_x - 15, pos_y - 15);
+    lv_obj_add_flag(userPoint, LV_OBJ_FLAG_IGNORE_LAYOUT);
+    lv_obj_move_foreground(userPoint);
+}
 
 /**
  *  @brief 加载地图
@@ -238,6 +279,7 @@ static void ui_roadMap_processMap(lv_obj_t *parent)
 {
     // 0. 创建九宫格网格
     lv_obj_t *div = lv_obj_create(parent);
+    roadmap_tile_div = div;
     lv_obj_set_size(div, TITLE_SIZE * 3, TITLE_SIZE * 3);
     lv_obj_add_style(div, &whiteBgStyle, 0);
     lv_obj_set_layout(div, LV_LAYOUT_GRID);
@@ -301,6 +343,7 @@ void ui_roadmap_create(lv_obj_t *parent)
 
     // 4. 添加子组件
     lv_obj_t *mapDiv = lv_obj_create(parent);
+    roadmap_map_div = mapDiv;
     lv_obj_set_width(mapDiv, lv_pct(100));
     lv_obj_set_style_pad_all(mapDiv, 0, 0);
     lv_obj_set_style_border_width(mapDiv, 0, 0);
@@ -377,4 +420,47 @@ void ui_roadmap_create(lv_obj_t *parent)
     lv_obj_t *distanceLabel = lv_label_create(infoDiv);
     lv_label_bind_text(distanceLabel, &distanceSubject, "%.2f km");
     lv_obj_align(distanceLabel, LV_ALIGN_RIGHT_MID, -15, 0);
+}
+
+/**
+ * @brief 根据有效GPS坐标更新用户在地图上的位置。
+ *
+ * 地图默认跟随最新GPS位置。只有中心瓦片发生变化时才重新加载瓦片；
+ * 如果仍在同一张中心瓦片内，则只更新滚动位置和红点位置。
+ *
+ * @param lat 十进制度格式的纬度。
+ * @param lon 十进制度格式的经度。
+ */
+void ui_roadmap_update_location(float lat, float lon)
+{
+    if (roadmap_map_div == NULL || roadmap_tile_div == NULL)
+    {
+        return;
+    }
+
+    latlngToWorldPixelFloat(lon, lat, lv_subject_get_int(&zoomSubject), &title.world_x, &title.world_y);
+    title.relav_world_x = title.world_x % TITLE_SIZE;
+    title.relav_world_y = title.world_y % TITLE_SIZE;
+    title.title_x = title.world_x / TITLE_SIZE;
+    title.title_y = title.world_y / TITLE_SIZE;
+
+    int old_center_title_x = title.center_title_x;
+    int old_center_title_y = title.center_title_y;
+
+    title.center_world_x = title.world_x;
+    title.center_world_y = title.world_y;
+    title.center_relav_world_x = title.relav_world_x;
+    title.center_relav_world_y = title.relav_world_y;
+    title.center_title_x = title.title_x;
+    title.center_title_y = title.title_y;
+
+    if (old_center_title_x != title.center_title_x || old_center_title_y != title.center_title_y)
+    {
+        load_map(roadmap_tile_div, roadmap_map_div);
+    }
+    else
+    {
+        scroll_map_to_center(roadmap_map_div);
+        update_user_point_position();
+    }
 }

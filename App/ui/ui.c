@@ -67,10 +67,10 @@ static void ui_subject_init(void)
     lv_subject_init_float(&distanceSubject, 0.2f);
     // 初始化坡度观察者
     lv_subject_init_float(&slopeSubject, 0.0f);
-    // 初始化经度观察者
-    lv_subject_init_float(&lonSubject, 113.835534f);
-    // 初始化纬度观察者
-    lv_subject_init_float(&latSubject, 22.628743f);
+    // 初始化经度观察者（固定测试点：深圳西部硅谷）
+    lv_subject_init_float(&lonSubject, 113.837692f);
+    // 初始化纬度观察者（固定测试点：深圳西部硅谷）
+    lv_subject_init_float(&latSubject, 22.626121f);
     // 初始化骑行时间观察者
     lv_subject_init_string(&timeSubject, timeBuff, beforetimeBuff, 9, "00 : 00");
     // 初始化缩放等级观察者
@@ -283,7 +283,25 @@ void ui_updateBikeState(float speed)
  * @param lat 
  * @param lon 
  */
+/**
+ * @brief 更新GPS位置显示，并将有效坐标同步到地图。
+ *
+ * @param lat 十进制度格式的纬度。
+ * @param lon 十进制度格式的经度。
+ */
 void ui_updateLocation(float lat, float lon)
 {
-    
+    if (!isfinite(lat) || !isfinite(lon))
+    {
+        return;
+    }
+
+    if ((lat == 0.0f && lon == 0.0f) || lat < -85.05112878f || lat > 85.05112878f || lon < -180.0f || lon > 180.0f)
+    {
+        return;
+    }
+
+    lv_subject_set_float(&lonSubject, lon);
+    lv_subject_set_float(&latSubject, lat);
+    ui_roadmap_update_location(lat, lon);
 }
