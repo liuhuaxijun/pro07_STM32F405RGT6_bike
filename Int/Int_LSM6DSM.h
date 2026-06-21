@@ -3,8 +3,9 @@
 
 #include "lsm6dsm_reg.h"
 #include "i2c.h"
-#include "task.h"
 #include "FreeRTOS.h"
+#include "task.h"
+#include "math.h"
 
 typedef struct
 {
@@ -23,6 +24,8 @@ typedef struct
     int16_t gyro_z;
 } AccGyroStruct;
 
+// 存储角速度，加速度变量结构体
+extern AccGyroStruct accgyro;
 
 // 初始化配置
 void Int_LSM6DSM_Init(void);

@@ -18,8 +18,7 @@ AccGyroStruct accgyro;
  */
 int32_t write_reg(void *handle, uint8_t reg, const uint8_t *buffer, uint16_t len)
 {
-
-    HAL_I2C_Mem_Write((I2C_HandleTypeDef *)handle, DEV_W, reg, I2C_MEMADD_SIZE_8BIT, buffer, len, 1000);
+    return (int32_t)HAL_I2C_Mem_Write((I2C_HandleTypeDef *)handle, DEV_W, reg, I2C_MEMADD_SIZE_8BIT, (uint8_t *)buffer, len, 1000);
 };
 
 /**
@@ -33,7 +32,7 @@ int32_t write_reg(void *handle, uint8_t reg, const uint8_t *buffer, uint16_t len
  */
 int32_t read_reg(void *handle, uint8_t reg, uint8_t *buffer, uint16_t len)
 {
-    HAL_I2C_Mem_Read((I2C_HandleTypeDef *)handle, DEV_R, reg, I2C_MEMADD_SIZE_8BIT, buffer, len, 1000);
+    return (int32_t)HAL_I2C_Mem_Read((I2C_HandleTypeDef *)handle, DEV_R, reg, I2C_MEMADD_SIZE_8BIT, (uint8_t *)buffer, len, 1000);
 };
 
 stmdev_ctx_t ctx = {
@@ -71,15 +70,30 @@ void Int_LSM6DSM_Init(void)
     lsm6dsm_block_data_update_set(&ctx, 1);
 
     // 5. 设置加速度和角速度的量程
-    lsm6dsm_gy_full_scale_set(&ctx, LSM6DSM_2000dps);   
-    lsm6dsm_xl_full_scale_set(&ctx, LSM6DSM_8g);  
+    lsm6dsm_gy_full_scale_set(&ctx, LSM6DSM_2000dps);
+    lsm6dsm_xl_full_scale_set(&ctx, LSM6DSM_8g);
 
     // 6. 数据输出速率
     lsm6dsm_gy_data_rate_set(&ctx, LSM6DSM_GY_ODR_52Hz);
     lsm6dsm_xl_data_rate_set(&ctx, LSM6DSM_XL_ODR_52Hz);
 }
 
-// 获取加速度和角速度
+// 读取六轴数据
 void Int_LSM6DSM_GetAccGyro(void)
 {
+    int16_t values[3] = {0}; 
+    // 读取三轴角速度
+    lsm6dsm_angular_rate_raw_get(&ctx, values);
+    accgyro.gyro_x = lsm6dsm_from_fs2000dps_to_mdps(values[0]);
+    accgyro.gyro_y = lsm6dsm_from_fs2000dps_to_mdps(values[1]);
+    accgyro.gyro_z = lsm6dsm_from_fs2000dps_to_mdps(values[2]);
+
+    // 读取三轴加速度
+    lsm6dsm_acceleration_raw_get(&ctx, values);
+    accgyro.acc_x = lsm6dsm_from_fs8g_to_mg(values[0]);
+    accgyro.acc_y = lsm6dsm_from_fs8g_to_mg(values[1]);
+    accgyro.acc_z = lsm6dsm_from_fs8g_to_mg(values[2]);
+
+    
+
 }

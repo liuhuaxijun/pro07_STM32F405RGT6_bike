@@ -66,7 +66,7 @@
     #endif
 #endif
 
-#ifdef CONFIG_LV_COLOR_DEPTH
+#ifdef CONFIG_LV_COLOR_DEPTH	 
     #define LV_KCONFIG_PRESENT
 #endif
 

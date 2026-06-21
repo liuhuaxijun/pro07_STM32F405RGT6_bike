@@ -35,6 +35,7 @@
 #include "fatfs.h"
 #include "Int_Power.h"
 #include "Int_ATGM336H.h"
+#include "Int_LSM6DSM.h"
 
 /* USER CODE END Includes */
 
@@ -99,6 +100,19 @@ void update_bike_cb(void *args)
   // 根据经纬度更新用户地图中的位置【考试】
 }
 
+// 坡度百分比
+float slope_percentage = 0.0f;
+/**
+ * @brief 更新坡度
+ * 
+ * @param args 
+ */
+void update_slope(void *args)
+{ 
+  // 把当前计算出来的坡度值 slope_percentage 写入 LVGL 的 subject 数据源 slopeSubject
+  lv_subject_set_float(&slopeSubject, slope_percentage);
+}
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -113,30 +127,30 @@ void update_bike_cb(void *args)
 /* Definitions for mainTask */
 osThreadId_t mainTaskHandle;
 const osThreadAttr_t mainTask_attributes = {
-  .name = "mainTask",
-  .stack_size = 4096 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+    .name = "mainTask",
+    .stack_size = 4096 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
 };
 /* Definitions for powerTask */
 osThreadId_t powerTaskHandle;
 const osThreadAttr_t powerTask_attributes = {
-  .name = "powerTask",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "powerTask",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for gpsTask */
 osThreadId_t gpsTaskHandle;
 const osThreadAttr_t gpsTask_attributes = {
-  .name = "gpsTask",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityBelowNormal,
+    .name = "gpsTask",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityBelowNormal,
 };
 /* Definitions for slopeTask */
 osThreadId_t slopeTaskHandle;
 const osThreadAttr_t slopeTask_attributes = {
-  .name = "slopeTask",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow7,
+    .name = "slopeTask",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t)osPriorityLow7,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -152,11 +166,12 @@ void slopeTaskFunc(void *argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /**
-  * @brief  FreeRTOS initialization
-  * @param  None
-  * @retval None
-  */
-void MX_FREERTOS_Init(void) {
+ * @brief  FreeRTOS initialization
+ * @param  None
+ * @retval None
+ */
+void MX_FREERTOS_Init(void)
+{
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -197,7 +212,6 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
-
 }
 
 /* USER CODE BEGIN Header_MainTaskFunc */
@@ -360,7 +374,7 @@ void GPSTaskFunc(void *argument)
           gps_to_gcj02(lat, lon, &lat, &lon);
 
           // 转换速度的单位
-          speed *= 1.852;
+          speed *= 1.852f;
 
           // 获取当前时间
           currentTime = xTaskGetTickCount();
@@ -373,7 +387,7 @@ void GPSTaskFunc(void *argument)
           // 更新上一次时间
           lastTime = currentTime;
 
-          COM_DEBUG_LN("lon = %f, lonDir = %c, lat = %f, latDir = %c, speed = %f, distance = %f, time = %d", lon, lonDir, lat, latDir, speed, distance, time);
+          // COM_DEBUG_LN("lon = %f, lonDir = %c, lat = %f, latDir = %c, speed = %f, distance = %f, time = %d", lon, lonDir, lat, latDir, speed, distance, time);
           // 更新数据到lvgl
           lv_async_call(update_bike_cb, NULL);
         }
@@ -389,18 +403,38 @@ void GPSTaskFunc(void *argument)
 
 /* USER CODE BEGIN Header_slopeTaskFunc */
 /**
-* @brief Function implementing the slopeTask thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the slopeTask thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_slopeTaskFunc */
 void slopeTaskFunc(void *argument)
 {
   /* USER CODE BEGIN slopeTaskFunc */
   /* Infinite loop */
-  for(;;)
+
+  Int_LSM6DSM_Init();
+
+  for (;;)
   {
-    osDelay(1);
+    Int_LSM6DSM_GetAccGyro();
+
+    // 计算出弧度
+    float angle = atan2f(-accgyro.acc_y, -accgyro.acc_z);
+
+    // 计算出坡度角
+    float angle_deg = angle * 180.0f / 3.1415f;
+
+    // 计算出坡度
+    slope_percentage = tanf(angle_deg * 3.1415f / 180.0f) * 100.0f;
+    COM_DEBUG_LN("angle_deg = %f slope_percentage = %f", angle_deg, slope_percentage);
+
+    // 更新坡度
+    lv_async_call(update_slope, NULL);
+
+    // COM_DEBUG_LN("accX = %d accY = %d accZ = %d gyroX = %d gyroY = %d gyroZ = %d", accgyro.acc_x, accgyro.acc_y, accgyro.acc_z, accgyro.gyro_x, accgyro.gyro_y, accgyro.gyro_z);
+
+    osDelay(20);
   }
   /* USER CODE END slopeTaskFunc */
 }
@@ -409,4 +443,3 @@ void slopeTaskFunc(void *argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
-
