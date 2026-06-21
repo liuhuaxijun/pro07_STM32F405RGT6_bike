@@ -1357,6 +1357,26 @@
               <FileType>5</FileType>
               <FilePath>..\Int\Int_ATGM336H.h</FilePath>
             </File>
+            <File>
+              <FileName>Int_LSM6DSM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Int\Int_LSM6DSM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Int_LSM6DSM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Int\Int_LSM6DSM.h</FilePath>
+            </File>
+            <File>
+              <FileName>lsm6dsm_reg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Int\lsm6dsm_reg.c</FilePath>
+            </File>
+            <File>
+              <FileName>lsm6dsm_reg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Int\lsm6dsm_reg.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

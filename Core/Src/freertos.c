@@ -113,23 +113,30 @@ void update_bike_cb(void *args)
 /* Definitions for mainTask */
 osThreadId_t mainTaskHandle;
 const osThreadAttr_t mainTask_attributes = {
-    .name = "mainTask",
-    .stack_size = 4096 * 4,
-    .priority = (osPriority_t)osPriorityNormal,
+  .name = "mainTask",
+  .stack_size = 4096 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for powerTask */
 osThreadId_t powerTaskHandle;
 const osThreadAttr_t powerTask_attributes = {
-    .name = "powerTask",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+  .name = "powerTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for gpsTask */
 osThreadId_t gpsTaskHandle;
 const osThreadAttr_t gpsTask_attributes = {
-    .name = "gpsTask",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityBelowNormal,
+  .name = "gpsTask",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityBelowNormal,
+};
+/* Definitions for slopeTask */
+osThreadId_t slopeTaskHandle;
+const osThreadAttr_t slopeTask_attributes = {
+  .name = "slopeTask",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow7,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -140,16 +147,16 @@ const osThreadAttr_t gpsTask_attributes = {
 void MainTaskFunc(void *argument);
 void PowerTaskFunc(void *argument);
 void GPSTaskFunc(void *argument);
+void slopeTaskFunc(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /**
- * @brief  FreeRTOS initialization
- * @param  None
- * @retval None
- */
-void MX_FREERTOS_Init(void)
-{
+  * @brief  FreeRTOS initialization
+  * @param  None
+  * @retval None
+  */
+void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -180,6 +187,9 @@ void MX_FREERTOS_Init(void)
   /* creation of gpsTask */
   gpsTaskHandle = osThreadNew(GPSTaskFunc, NULL, &gpsTask_attributes);
 
+  /* creation of slopeTask */
+  slopeTaskHandle = osThreadNew(slopeTaskFunc, NULL, &slopeTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -187,6 +197,7 @@ void MX_FREERTOS_Init(void)
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
+
 }
 
 /* USER CODE BEGIN Header_MainTaskFunc */
@@ -376,7 +387,26 @@ void GPSTaskFunc(void *argument)
   /* USER CODE END GPSTaskFunc */
 }
 
+/* USER CODE BEGIN Header_slopeTaskFunc */
+/**
+* @brief Function implementing the slopeTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_slopeTaskFunc */
+void slopeTaskFunc(void *argument)
+{
+  /* USER CODE BEGIN slopeTaskFunc */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END slopeTaskFunc */
+}
+
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
+
